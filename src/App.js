@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import usePageTracking from "./hooks/usePageTracking";
+import SignupButton from "./components/SignupButton";
+
+// Create a small wrapper component to handle the tracking
+function TrackingProvider() {
+  usePageTracking();
+  return null; // This component doesn't render anything, just tracks
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      {/* Now usePageTracking is INSIDE BrowserRouter, so it will work! */}
+      <TrackingProvider />
+
+      <Routes>
+        <Route path="/" element={<SignupButton />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
