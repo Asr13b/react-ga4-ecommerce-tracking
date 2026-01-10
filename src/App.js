@@ -11,7 +11,7 @@ function TrackingProvider() {
 function App() {
   return (
     <BrowserRouter>
-      {/* Now usePageTracking is INSIDE BrowserRouter, so it will work! */}
+      {/* Now usePageTracking is INSIDE BrowserRouter */}
       <TrackingProvider />
 
       <Routes>
